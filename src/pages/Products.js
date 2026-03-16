@@ -17,6 +17,7 @@ const Products = () => {
   
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const [currentProduct, setCurrentProduct] = useState(null);
   const [imageFile, setImageFile] = useState(null);
   
@@ -123,6 +124,7 @@ const Products = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitting(true);
     const data = new FormData();
     data.append('name', formData.name);
     data.append('description', formData.description);
@@ -155,6 +157,8 @@ const Products = () => {
       fetchData();
     } catch (err) {
       alert(err.response?.data?.message || 'Something went wrong');
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -175,6 +179,12 @@ const Products = () => {
     prod.category?.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
     prod.menuSection?.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  const getImageUrl = (imagePath) => {
+    if (!imagePath) return 'https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=100&auto=format&fit=crop';
+    if (imagePath.startsWith('http')) return imagePath;
+    return `https://optimist-backend-api.onrender.com${imagePath}`;
+  };
 
   const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -243,7 +253,7 @@ const Products = () => {
                   <td className="px-4 md:px-6 py-4">
                     <div className="flex items-center">
                       <img 
-                        src={prod.image ? `https://optimist-backend-api.onrender.com${prod.image}` : 'https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=100&auto=format&fit=crop'} 
+                        src={getImageUrl(prod.image)} 
                         alt={prod.name}
                         className="w-10 h-10 md:w-12 md:h-12 rounded-xl object-cover mr-3 md:mr-4 shadow-md flex-shrink-0"
                       />
@@ -530,10 +540,11 @@ const Products = () => {
 
           <button
             type="submit"
-            className="w-full py-4 rounded-2xl font-black uppercase tracking-widest shadow-lg transition-transform active:scale-95"
+            disabled={submitting}
+            className="w-full py-4 rounded-2xl font-black uppercase tracking-widest shadow-lg transition-transform active:scale-95 disabled:opacity-50 disabled:active:scale-100"
             style={{ backgroundColor: theme.primary, color: theme.background }}
           >
-            {currentProduct ? 'Update Product' : 'Create Product'}
+            {submitting ? 'Please Wait...' : (currentProduct ? 'Update Product' : 'Create Product')}
           </button>
         </form>
       </Modal>
