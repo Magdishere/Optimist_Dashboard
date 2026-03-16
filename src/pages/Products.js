@@ -182,7 +182,16 @@ const Products = () => {
 
   const getImageUrl = (imagePath) => {
     if (!imagePath) return 'https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=100&auto=format&fit=crop';
-    if (imagePath.startsWith('http')) return imagePath;
+    
+    // Check if it already contains a protocol or double slash
+    if (imagePath.includes('//')) {
+      // If it's malformed like "https//", fix it to "https://"
+      if (imagePath.startsWith('http') && !imagePath.includes('://')) {
+        return imagePath.replace('http', 'http:').replace('https:', 'https://').replace('http:', 'http://');
+      }
+      return imagePath;
+    }
+    
     return `https://optimist-backend-api.onrender.com${imagePath}`;
   };
 

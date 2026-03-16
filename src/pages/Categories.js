@@ -118,7 +118,16 @@ const Categories = () => {
 
   const getImageUrl = (imagePath) => {
     if (!imagePath) return 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=600&auto=format&fit=crop';
-    if (imagePath.startsWith('http')) return imagePath;
+    
+    // Check if it already contains a protocol or double slash
+    if (imagePath.includes('//')) {
+      // If it's malformed like "https//", fix it to "https://"
+      if (imagePath.startsWith('http') && !imagePath.includes('://')) {
+        return imagePath.replace('http', 'http:').replace('https:', 'https://').replace('http:', 'http://');
+      }
+      return imagePath;
+    }
+    
     return `https://optimist-backend-api.onrender.com${imagePath}`;
   };
 
