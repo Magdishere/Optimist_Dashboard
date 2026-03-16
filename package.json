@@ -1,7 +1,7 @@
 {
   "name": "optimist-admin-dashboard",
   "version": "0.1.0",
-  "homepage": "https://placeholder.github.io/optimist-admin-dashboard",
+  "homepage": "https://magdishere.github.io/Optimist_Dashboard/",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^2.11.2",
