@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
 import { ThemeProvider } from './theme/ThemeContext';
@@ -17,7 +17,7 @@ function App() {
   return (
     <Provider store={store}>
       <ThemeProvider>
-        <BrowserRouter basename="/Optimist_Dashboard">
+        <HashRouter>
           <Routes>
             <Route path="/login" element={<Login />} />
             
@@ -32,7 +32,7 @@ function App() {
               </Route>
             </Route>
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
       </ThemeProvider>
     </Provider>
   );
