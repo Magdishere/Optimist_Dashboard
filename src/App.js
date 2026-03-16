@@ -17,7 +17,7 @@ function App() {
   return (
     <Provider store={store}>
       <ThemeProvider>
-        <BrowserRouter>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
           <Routes>
             <Route path="/login" element={<Login />} />
             
