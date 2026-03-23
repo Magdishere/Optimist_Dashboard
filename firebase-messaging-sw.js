@@ -24,7 +24,7 @@ messaging.onBackgroundMessage((payload) => {
   const notificationTitle = payload.notification.title;
   const notificationOptions = {
     body: payload.notification.body,
-    icon: '/optimist_logo_192.png', // Assuming dashboard has this logo too
+    icon: 'logo192.png', // Relative path for GitHub Pages
     data: payload.data
   };
 
