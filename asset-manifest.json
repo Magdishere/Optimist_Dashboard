@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Optimist_Dashboard/static/css/main.d75cbb64.css",
-    "main.js": "/Optimist_Dashboard/static/js/main.9b877acc.js",
+    "main.css": "/Optimist_Dashboard/static/css/main.3b4fcbdc.css",
+    "main.js": "/Optimist_Dashboard/static/js/main.d0579148.js",
     "static/js/453.1da6f40b.chunk.js": "/Optimist_Dashboard/static/js/453.1da6f40b.chunk.js",
     "index.html": "/Optimist_Dashboard/index.html",
-    "main.d75cbb64.css.map": "/Optimist_Dashboard/static/css/main.d75cbb64.css.map",
-    "main.9b877acc.js.map": "/Optimist_Dashboard/static/js/main.9b877acc.js.map",
+    "main.3b4fcbdc.css.map": "/Optimist_Dashboard/static/css/main.3b4fcbdc.css.map",
+    "main.d0579148.js.map": "/Optimist_Dashboard/static/js/main.d0579148.js.map",
     "453.1da6f40b.chunk.js.map": "/Optimist_Dashboard/static/js/453.1da6f40b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d75cbb64.css",
-    "static/js/main.9b877acc.js"
+    "static/css/main.3b4fcbdc.css",
+    "static/js/main.d0579148.js"
   ]
 }
